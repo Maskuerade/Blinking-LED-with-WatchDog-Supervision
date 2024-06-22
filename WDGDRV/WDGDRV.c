@@ -22,6 +22,7 @@
 #define WDE         3  // Watchdog Enable
 #define WDP1        1  // Watchdog Timer Prescaler 1
 volatile uint16 timer_counter = 0;
+volatile uint8 reset_occured;// = 0;
 
 
 static inline void disable_interrupt() {
@@ -46,56 +47,31 @@ void WDGDrv_Init(void)
 }
 
 
-//void WDGDrv_Init(void)
-//{
-//	disable_interrupt();
-//
-//	// This bit is set if a watchdog system reset occurs.
-//	//The bit is reset by writing a logic zero to the flag.
-//	MCUSR &= ~(1<<WDRF);
-//	wdt_reset();
-//	MCUSR |= (1<<WDRF);
-//	WDTCSR &= ~(1<<WDCE);
-//	WDTCSR |= (1<<WDCE);
-//	WDTCSR &= ~(1<<WDE);
-//	WDTCSR |= (1<<WDE);
-//
-//	/* Set new prescaler(time-out) value = 64ms*/
-//	// set WDP1 to 1 and WDP0 to 0 so that we get 64ms
-//	WDTCSR |= (1<<WDE);
-//	WDTCSR |= (1<<WDP1);
-//	WDTCSR &= ~(1 << WDP0);
-//
-//	enable_interrupt();
-//}
-
 
 
 
 void WDGDrv_IsrNotification(void) {
 	timer_counter += 50;
-
 	    if (timer_counter % 100 != 0 ) {
 	        // After 50ms, check if WDGM_MainFunction has been executed
 	        //wdgm_mainfunction_executed = true => not stuck
-	    	if (!wdgm_mainfunction_executed) {
+
+	    	if (wdgm_mainfunction_executed == 2 && ledm_call_count == 5) {
 	    		//refresh because the main function is not stuck
+
 	    		wdt_reset();
 	        }
-	        else{
-	        	//if main function is stuck
-	        	wdgm_mainfunction_executed = 0;
-				status = NOK;
-	        }
-	    } else if (timer_counter % 100 == 0) {
+
+	    }
+	    if (timer_counter % 100 == 0) {
 	        // After 100ms, check the two conditions
-	        if (wdgm_mainfunction_executed && (WDGM_PovideSuppervisionStatus() == OK)) {
+	        if (wdgm_mainfunction_executed >= 4 && (WDGM_PovideSuppervisionStatus() == OK)) {
 	            wdt_reset(); // Refresh the watchdog timer
 	        }
 	        // Reset flags and counter for the next period
 	        wdgm_mainfunction_executed = 0;
 	        status = NOK;
 	        timer_counter = 0;
-	    }
 
+	    }
 }

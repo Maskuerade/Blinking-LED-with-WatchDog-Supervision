@@ -54,6 +54,26 @@ void Timer_Init(void) {
     TCCR1B |= (1 << CS12) | (1 << CS10);
 }
 
+
+
+//void Timer_Init(void) {
+//    // Initialize counter to zero
+//    TCNT1L = 0;
+//    TCNT1H = 0;
+//
+//    // Set Timer1 to CTC mode
+//    TCCR1B |= (1 << WGM12);
+//
+//    // Set OCR1A to 780 for 50ms interval with 1024 prescaler
+//    OCR1A = 390;
+//
+//    // Enable compare interrupt
+//    TIMSK1 |= (1 << OCIE1A);
+//
+//    // Start timer with 1024 prescaler
+//    TCCR1B |= (1 << CS12) | (1 << CS10);
+//}
+
 ISR(TIMER1_COMPA_vect) {
     WDGDrv_IsrNotification();
 }

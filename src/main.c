@@ -22,9 +22,14 @@ int main() {
 
 	Gpio_Init();
 	LED_Init();
+    Gpio_Write(1,1);
+    _delay_ms(500);
+    Gpio_Write(1,0);
+
 	WDGDrv_Init();
 	WDGM_Init();
 	Timer_Init();
+
 
 
 
@@ -34,12 +39,13 @@ int main() {
 	while (1) {
 		_delay_ms(10);
 		LED_Manage();
-
-
 		wdgm_counter += 10;
+
 		if (wdgm_counter >= 20) {
+
 			wdgm_counter = 0;
 			WDGM_MainFunction();
+
 		}
 	}
 

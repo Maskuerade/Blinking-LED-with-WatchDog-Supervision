@@ -9,7 +9,8 @@
 #define WDGM_H_
 #include "Std_Types.h"
 extern volatile uint8 wdgm_mainfunction_executed;
-
+extern volatile uint8 is_refreshed;
+extern volatile uint8 ledm_call_count;
 typedef enum {OK = 0, NOK = 1}WDGM_StatusType;
 extern WDGM_StatusType status ;
 void WDGM_Init(void);

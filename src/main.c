@@ -22,11 +22,14 @@ int main() {
 
 	Gpio_Init();
 	LED_Init();
+
+	Gpio_Write(5, 1);
+	_delay_ms(1000);
+	Gpio_Write(5, 0);
+
+	Timer_Init();
 	WDGDrv_Init();
 	WDGM_Init();
-	Timer_Init();
-
-
 
 	unsigned int wdgm_counter = 0;
 

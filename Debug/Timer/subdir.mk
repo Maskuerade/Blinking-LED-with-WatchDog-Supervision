@@ -17,7 +17,7 @@ C_DEPS += \
 Timer/%.o: ../Timer/%.c Timer/subdir.mk
 	@echo 'Building file: $<'
 	@echo 'Invoking: AVR Compiler'
-	avr-gcc -I"C:\Users\Camellia\Downloads\final_project\LED" -I"C:\Users\Camellia\Downloads\final_project\WDGDRV" -I"C:\Users\Camellia\Downloads\final_project\GPIO" -I"C:\Users\Camellia\Downloads\final_project\WDGM" -I"C:\Users\Camellia\Downloads\final_project\src" -I"C:\Users\Camellia\Downloads\final_project\Timer" -Wall -g2 -gstabs -O1 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega328p -DF_CPU=1000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -c -o "$@" "$<"
+	avr-gcc -I"C:\Users\ayaey\Desktop\y\Blinking-LED-with-WatchDog-Supervision\LED" -I"C:\Users\ayaey\Desktop\y\Blinking-LED-with-WatchDog-Supervision\WDGDRV" -I"C:\Users\ayaey\Desktop\y\Blinking-LED-with-WatchDog-Supervision\GPIO" -I"C:\Users\ayaey\Desktop\y\Blinking-LED-with-WatchDog-Supervision\WDGM" -I"C:\Users\ayaey\Desktop\y\Blinking-LED-with-WatchDog-Supervision\src" -I"C:\Users\ayaey\Desktop\y\Blinking-LED-with-WatchDog-Supervision\Timer" -Wall -g2 -gstabs -O1 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega328p -DF_CPU=1000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

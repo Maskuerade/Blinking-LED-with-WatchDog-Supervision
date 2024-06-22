@@ -46,7 +46,6 @@ void WDGM_MainFunction(void) {
 
     //Gpio_Write(2, 0);
 
-
 }
 
 

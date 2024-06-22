@@ -31,13 +31,3 @@ void LED_Manage(void) {
 }
 
 
-
-// Simulated delay function
-void Delay(uint32 ms){
-	volatile uint32 i;
-	for (i = 0; i < ms * 1000; i++) {
-
-	}
-}
-
-

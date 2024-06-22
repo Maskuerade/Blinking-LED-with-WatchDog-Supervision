@@ -10,9 +10,9 @@
 #include "Std_Types.h"
 #include "Utils.h"
 
- #define GPIOB_BASE_ADDR    (volatile unsigned int*)0x23
- #define GPIOC_BASE_ADDR    (volatile unsigned int*)0x26
- #define GPIOD_BASE_ADDR    (volatile unsigned int*)0x29
+ #define GPIOB_BASE_ADDR    (volatile uint8*)0x23
+ #define GPIOC_BASE_ADDR    (volatile uint8*)0x26
+ #define GPIOD_BASE_ADDR    (volatile uint8*)0x29
 
 typedef struct {
 	uint8 GPIO_PINx; // input, read-only

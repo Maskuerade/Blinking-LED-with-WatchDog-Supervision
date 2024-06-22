@@ -23,6 +23,9 @@
 #define WDP1        1  // Watchdog Timer Prescaler 1
 volatile uint16 timer_counter = 0;
 
+#define MCUSR  (*(volatile uint8*)(0x55))
+#define WDTCSR  (*(volatile uint8*)(0x60))
+
 
 static inline void disable_interrupt() {
     SREG &= ~(1 << SREG_I);
@@ -73,6 +76,7 @@ void WDGDrv_Init(void)
 
 
 void WDGDrv_IsrNotification(void) {
+	Gpio_Write(3, 1);
 	timer_counter += 50;
 
 	    if (timer_counter % 100 != 0 ) {
@@ -97,5 +101,6 @@ void WDGDrv_IsrNotification(void) {
 	        status = NOK;
 	        timer_counter = 0;
 	    }
+	    Gpio_Write(3, 0);
 
 }

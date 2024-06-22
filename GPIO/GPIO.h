@@ -20,12 +20,12 @@
 #define HIGH   0x01
 
 #define PinNum 0
-#define PinNum1 1
-#define PinNum2 2
+#define RESET_LED_PIN 1
+//#define PinNum2 2
 #define PinNum3 3
-#define PinNum4 4
-#define PinNum5 5
-#define PinNum6 6
+//#define PinNum4 4
+//#define PinNum5 5
+//#define PinNum6 6
 
 
 void Gpio_Init();

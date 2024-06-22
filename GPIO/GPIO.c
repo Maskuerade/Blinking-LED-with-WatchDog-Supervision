@@ -23,12 +23,12 @@ void Gpio_Init() {
 	// configure the pins as output
 	//IF OTHER PINS NOT USED ----  MAY BE SET ALL OUTPUT
 	gpioReg->GPIO_DDRx |= (0x01<<PinNum);
-	gpioReg->GPIO_DDRx |= (0x01<<PinNum1);
-	gpioReg->GPIO_DDRx |= (0x01<<PinNum2);
+	gpioReg->GPIO_DDRx |= (0x01<<RESET_LED_PIN);
+//	gpioReg->GPIO_DDRx |= (0x01<<PinNum2);
 	gpioReg->GPIO_DDRx |= (0x01<<PinNum3);
-	gpioReg->GPIO_DDRx |= (0x01<<PinNum4);
-	gpioReg->GPIO_DDRx |= (0x01<<PinNum5);
-	gpioReg->GPIO_DDRx |= (0x01<<PinNum6);
+//	gpioReg->GPIO_DDRx |= (0x01<<PinNum4);
+//	gpioReg->GPIO_DDRx |= (0x01<<PinNum5);
+//	gpioReg->GPIO_DDRx |= (0x01<<PinNum6);
 
 
 }

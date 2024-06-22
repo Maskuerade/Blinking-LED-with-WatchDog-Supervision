@@ -26,8 +26,7 @@ void LED_Manage(void) {
         counter = 0;
     }
 
-    WDGM_AlivenessIndication();
-    //Gpio_Write(1, 0);
+//    WDGM_AlivenessIndication();
 }
 
 
